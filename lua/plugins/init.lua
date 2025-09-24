@@ -35,6 +35,7 @@ return {
         "github:mason-org/mason-registry",
         "github:Crashdummyy/mason-registry",
       },
+      --Remember to enable these in the ~/.config/nvim/lua/configs/lspconfig.lua (roslyn and clangd already enabled)  
       ensure_installed = {
         "lua-language-server",
         "xmlformatter",
@@ -54,6 +55,7 @@ return {
       },
     },
   },
+  --C# and dotnet stuff
   {
     "seblyng/roslyn.nvim",
     ---@module 'roslyn.config'
@@ -121,6 +123,7 @@ return {
         },
       })
     end,
-},
+  },
+  --End of c# stuff
 
 }
