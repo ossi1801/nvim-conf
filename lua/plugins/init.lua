@@ -95,7 +95,6 @@ return {
           ["csharp|inlay_hints"] = {
             csharp_enable_inlay_hints_for_implicit_object_creation = true,
             csharp_enable_inlay_hints_for_implicit_variable_types = true,
-
             csharp_enable_inlay_hints_for_lambda_parameter_types = true,
             csharp_enable_inlay_hints_for_types = true,
             dotnet_enable_inlay_hints_for_indexer_parameters = true,
@@ -124,6 +123,13 @@ return {
       })
     end,
   },
+  -- {
+  --   config = function()
+  -- require "plugins.dotnetdebug"
+  --     --local dotnetdebug = require("plugins.dotnetdebug")
+  --     --dotnetdebug .foo()
+  --   end,
+  -- },
   --End of c# stuff
 
 }
