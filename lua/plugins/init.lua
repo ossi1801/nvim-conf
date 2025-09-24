@@ -1,7 +1,7 @@
 return {
   {
     "stevearc/conform.nvim",
-    -- event = 'BufWritePre', -- uncomment for format on save
+    event = 'BufWritePre', -- uncomment for format on save
     opts = require "configs.conform",
   },
 
@@ -50,8 +50,7 @@ return {
         "rust-analyzer",
         "roslyn",
         "rzls",
-        -- "csharp-language-server",
-        -- "omnisharp",
+        "clangd"
       },
     },
   },
@@ -75,7 +74,6 @@ return {
     config = function()
       -- Use one of the methods in the Integration section to compose the command.
       local mason_registry = require("mason-registry")
-
       local rzls_path = vim.fn.expand("$MASON/packages/rzls/libexec")
       local cmd = {
         "roslyn",
@@ -124,8 +122,5 @@ return {
       })
     end,
 },
-
-  -- test new blink
-  -- { import = "nvchad.blink.lazyspec" },
 
 }

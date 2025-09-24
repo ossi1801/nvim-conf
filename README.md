@@ -9,4 +9,10 @@
 1) Lazyvim starter https://github.com/LazyVim/starter as nvchad's starter was inspired by Lazyvim's . It made a lot of things easier!
 
 
- ``` :MasonInstall lua-language-server xmlformatter csharpier prettier stylua bicep-lsp html-lsp css-lsp eslint-lsp typescript-language-server json-lsp rust-analyzer roslyn rzls ``` 
+### Run mason in blocking fashion if there are no UIs attached (i.e. running in headless mode): 
+
+```nvim --headless -c "MasonInstall lua-language-server xmlformatter csharpier prettier stylua bicep-lsp html-lsp css-lsp eslint-lsp typescript-language-server json-lsp rust-analyzer roslyn rzls" -c "qall"```
+
+## or with mason inside nvim
+
+``` :MasonInstall lua-language-server xmlformatter csharpier prettier stylua bicep-lsp html-lsp css-lsp eslint-lsp typescript-language-server json-lsp rust-analyzer roslyn rzls ``` 
