@@ -28,8 +28,9 @@ return {
     },
   },
   {
-    "williamboman/mason.nvim",
+    "mason-org/mason.nvim",
     opts = {
+      automatic_installation = true,
       registries = {
         "github:mason-org/mason-registry",
         "github:Crashdummyy/mason-registry",
