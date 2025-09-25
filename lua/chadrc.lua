@@ -6,7 +6,9 @@
 local M = {}
 
 M.base46 = {
-	theme = "onedark",
+	theme = "vscode_dark",--"onedark",
+  --https://nvchad.com/themes
+  --Read :h nvui.base46
 
 	-- hl_override = {
 	-- 	Comment = { italic = true },

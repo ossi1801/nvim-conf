@@ -123,13 +123,14 @@ return {
       })
     end,
   },
-  -- {
+  {
   --   config = function()
-  -- require "plugins.dotnetdebug"
+  require "plugins.dotnetdebug",
+  print("Loaded dotnet")
   --     --local dotnetdebug = require("plugins.dotnetdebug")
   --     --dotnetdebug .foo()
   --   end,
-  -- },
+  },
   --End of c# stuff
 
 }
