@@ -12,7 +12,7 @@ vim.g.mapleader = " "
 vim.pack.add({
 		{ src = "https://github.com/vague2k/vague.nvim" },
 		{ src = "https://github.com/chentoast/marks.nvim" },
-		{ src = "https://github.com/stevearc/oil.nvim" },
+		{ src = "https://github.com/stevearc/oil.nvim" },--File browser
 		{ src = "https://github.com/nvim-tree/nvim-web-devicons" },
 		{ src = "https://github.com/aznhe21/actions-preview.nvim" },
 		{ src = "https://github.com/nvim-treesitter/nvim-treesitter",        version = "main" },
@@ -22,11 +22,13 @@ vim.pack.add({
 		{ src = "https://github.com/mason-org/mason.nvim" },
 		{ src = "https://github.com/L3MON4D3/LuaSnip" },
 		{ src = "https://github.com/LinArcX/telescope-env.nvim" },
+		{ src = "https://github.com/nvim-lua/plenary.nvim" }, --Required for harpoon2
+		{ src = "https://github.com/ThePrimeagen/harpoon", version = "harpoon2"},
 		--https://github.com/numToStr/Comment.nvim
 })
 require("mason").setup()
 require("oil").setup()
-
+require("plenary")
 --Configure LSP
  vim.api.nvim_create_autocmd('LspAttach', {
  	group = vim.api.nvim_create_augroup('my.lsp', {}),
@@ -42,6 +44,13 @@ require("oil").setup()
  })
 vim.cmd [[set completeopt+=menuone,noselect,popup]]
 vim.lsp.enable({"lua_ls", "clangd","cpp" })
+
+--Harpoon for jumping in files
+local harpoon = require("harpoon")
+harpoon:setup()
+vim.keymap.set("n", "<leader>a", function() harpoon:list():add() end)
+vim.keymap.set("n", "<C-e>", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
+
 
 -- Rest of the keybindings
 vim.keymap.set('n','<leader>e', ":Oil<CR>")
