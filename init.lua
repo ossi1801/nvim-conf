@@ -7,10 +7,13 @@ vim.o.swapfile = false
 vim.o.smartindent = true
 vim.o.signcolumn = "yes"
 vim.g.mapleader = " "
+
+
 --
 --Plugins
 vim.pack.add({
 	{ src = "https://github.com/vague2k/vague.nvim" },                                 --Color theme
+	{ src = "https://github.com/navarasu/onedark.nvim" },                                 --Color theme
 	{ src = "https://github.com/chentoast/marks.nvim" },                               --Mark your files
 	{ src = "https://github.com/stevearc/oil.nvim" },                                  --File browser
 	{ src = "https://github.com/nvim-tree/nvim-web-devicons" },                        --Icons
@@ -31,8 +34,10 @@ vim.pack.add({
 require("mason").setup()
 require("oil").setup()
 require("plenary")
-require("vague").setup({})
-vim.cmd("colorscheme vague")
+
+--require("vague").setup({})
+require("onedark").setup({style = 'deep'})
+vim.cmd("colorscheme onedark")
 
 --Configure LSP
 vim.api.nvim_create_autocmd('LspAttach', {
@@ -48,7 +53,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 	end,
 })
 vim.cmd [[set completeopt+=menuone,noselect,popup]]
-vim.lsp.enable({ "lua_ls", "clangd", "cpp" })
+vim.lsp.enable({ "lua_ls", "clangd", "cpp","omnisharp" })
 
 --NVIM DEBUGGER STUFF
 vim.api.nvim_set_hl(0,'DapBreakpoint', { ctermbg=0, fg='#993939', bg='#31353f' })

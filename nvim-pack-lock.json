@@ -42,6 +42,10 @@
       "rev": "7e1cd77",
       "src": "https://github.com/stevearc/oil.nvim"
     },
+    "onedark.nvim": {
+      "rev": "de495fa",
+      "src": "https://github.com/navarasu/onedark.nvim"
+    },
     "plenary.nvim": {
       "rev": "b9fd522",
       "src": "https://github.com/nvim-lua/plenary.nvim"
