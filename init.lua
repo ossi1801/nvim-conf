@@ -13,7 +13,7 @@ vim.g.mapleader = " "
 --Plugins
 vim.pack.add({
 	{ src = "https://github.com/vague2k/vague.nvim" },                                 --Color theme
-	{ src = "https://github.com/navarasu/onedark.nvim" },                                 --Color theme
+	{ src = "https://github.com/navarasu/onedark.nvim" },                              --Color theme
 	{ src = "https://github.com/chentoast/marks.nvim" },                               --Mark your files
 	{ src = "https://github.com/stevearc/oil.nvim" },                                  --File browser
 	{ src = "https://github.com/nvim-tree/nvim-web-devicons" },                        --Icons
@@ -28,7 +28,7 @@ vim.pack.add({
 	{ src = "https://github.com/nvim-lua/plenary.nvim" },                              --Needed for harpoon2
 	{ src = "https://github.com/ThePrimeagen/harpoon",                   version = "harpoon2" },
 	{ src = "https://github.com/mfussenegger/nvim-dap" },
---	{ src = "https://github.com/rcarriga/nvim-dap-ui" },
+	--	{ src = "https://github.com/rcarriga/nvim-dap-ui" },
 	--https://github.com/numToStr/Comment.nvim
 })
 require("mason").setup()
@@ -36,7 +36,7 @@ require("oil").setup()
 require("plenary")
 
 --require("vague").setup({})
-require("onedark").setup({style = 'deep'})
+require("onedark").setup({ style = 'deep' })
 vim.cmd("colorscheme onedark")
 
 --Configure LSP
@@ -53,18 +53,21 @@ vim.api.nvim_create_autocmd('LspAttach', {
 	end,
 })
 vim.cmd [[set completeopt+=menuone,noselect,popup]]
-vim.lsp.enable({ "lua_ls", "clangd", "cpp","omnisharp" })
+vim.lsp.enable({ "lua_ls", "clangd", "cpp", "omnisharp" })
 
 --NVIM DEBUGGER STUFF
-vim.api.nvim_set_hl(0,'DapBreakpoint', { ctermbg=0, fg='#993939', bg='#31353f' })
-vim.api.nvim_set_hl(0,'DapLogPoint', { ctermbg=0, fg='#61afef', bg='#31353f' })
-vim.api.nvim_set_hl(0,'DapStopped', { ctermbg=0, fg='#98c379', bg='#31353f' })
+vim.api.nvim_set_hl(0, 'DapBreakpoint', { ctermbg = 0, fg = '#993939', bg = '#31353f' })
+vim.api.nvim_set_hl(0, 'DapLogPoint', { ctermbg = 0, fg = '#61afef', bg = '#31353f' })
+vim.api.nvim_set_hl(0, 'DapStopped', { ctermbg = 0, fg = '#98c379', bg = '#31353f' })
 
-vim.fn.sign_define('DapBreakpoint', { text='•', texthl='DapBreakpoint', linehl='DapBreakpoint', numhl='DapBreakpoint' })
-vim.fn.sign_define('DapBreakpointCondition', { text='•', texthl='DapBreakpoint', linehl='DapBreakpoint', numhl='DapBreakpoint' })
-vim.fn.sign_define('DapBreakpointRejected', { text='', texthl='DapBreakpoint', linehl='DapBreakpoint', numhl= 'DapBreakpoint' })
-vim.fn.sign_define('DapLogPoint', { text='', texthl='DapLogPoint', linehl='DapLogPoint', numhl= 'DapLogPoint' })
-vim.fn.sign_define('DapStopped', { text='', texthl='DapStopped', linehl='DapStopped', numhl= 'DapStopped' })
+vim.fn.sign_define('DapBreakpoint', { text = '•', texthl = 'DapBreakpoint', linehl = 'DapBreakpoint', numhl =
+'DapBreakpoint' })
+vim.fn.sign_define('DapBreakpointCondition',
+	{ text = '•', texthl = 'DapBreakpoint', linehl = 'DapBreakpoint', numhl = 'DapBreakpoint' })
+vim.fn.sign_define('DapBreakpointRejected',
+	{ text = '', texthl = 'DapBreakpoint', linehl = 'DapBreakpoint', numhl = 'DapBreakpoint' })
+vim.fn.sign_define('DapLogPoint', { text = '', texthl = 'DapLogPoint', linehl = 'DapLogPoint', numhl = 'DapLogPoint' })
+vim.fn.sign_define('DapStopped', { text = '', texthl = 'DapStopped', linehl = 'DapStopped', numhl = 'DapStopped' })
 
 
 --Harpoon for jumping in files
@@ -91,5 +94,6 @@ vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help ta
 -- Rest of the keybindings
 vim.keymap.set('n', '<leader>e', ":Oil<CR>")
 vim.keymap.set('n', '<leader>kf', vim.lsp.buf.format)
+vim.keymap.set('n', '<leader>h', vim.diagnostic.open_float)
 --vim.keymap.set('n','<leader>e', ":Oil<CR>")
 --vim.keymap.set('n','<leader>e', ":Oil<CR>")
