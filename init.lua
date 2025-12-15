@@ -53,7 +53,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
 	end,
 })
 vim.cmd [[set completeopt+=menuone,noselect,popup]]
-vim.lsp.enable({ "lua_ls", "clangd", "cpp", "omnisharp" })
+vim.lsp.enable({ "lua_ls", "clangd", "cpp", "omnisharp","qmlls" })
+
 
 --NVIM DEBUGGER STUFF
 vim.api.nvim_set_hl(0, 'DapBreakpoint', { ctermbg = 0, fg = '#993939', bg = '#31353f' })
@@ -95,5 +96,7 @@ vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help ta
 vim.keymap.set('n', '<leader>e', ":Oil<CR>")
 vim.keymap.set('n', '<leader>kf', vim.lsp.buf.format)
 vim.keymap.set('n', '<leader>h', vim.diagnostic.open_float)
+vim.keymap.set('n', '<leader>sv', ":bot vs<bar>term<cr>") -- :top for top split
+vim.keymap.set('n', '<leader>sh', ":bot sp<bar>term<cr>") -- :top for top split
 --vim.keymap.set('n','<leader>e', ":Oil<CR>")
 --vim.keymap.set('n','<leader>e', ":Oil<CR>")
