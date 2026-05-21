@@ -28,13 +28,21 @@ vim.pack.add({
 	{ src = "https://github.com/nvim-lua/plenary.nvim" },                              --Needed for harpoon2
 	{ src = "https://github.com/ThePrimeagen/harpoon",                   version = "harpoon2" },
 	{ src = "https://github.com/mfussenegger/nvim-dap" },
+	{ src = "https://github.com/sphamba/smear-cursor.nvim" },
+	{ src = "https://github.com/karb94/neoscroll.nvim" },
 	--	{ src = "https://github.com/rcarriga/nvim-dap-ui" },
 	--https://github.com/numToStr/Comment.nvim
 })
 require("mason").setup()
 require("oil").setup()
 require("plenary")
+require('smear_cursor').enabled = true
+require('smear_cursor').setup({
+  stiffness = 0.8,
+  trailing_stiffness = 0.5,
+  distance_stop_animating = 0.5,
 
+})
 --require("vague").setup({})
 require("onedark").setup({ style = 'deep' })
 vim.cmd("colorscheme onedark")
@@ -100,3 +108,24 @@ vim.keymap.set('n', '<leader>sv', ":bot vs<bar>term<cr>") -- :top for top split
 vim.keymap.set('n', '<leader>sh', ":bot sp<bar>term<cr>") -- :top for top split
 --vim.keymap.set('n','<leader>e', ":Oil<CR>")
 --vim.keymap.set('n','<leader>e', ":Oil<CR>")
+
+require('neoscroll').setup({
+  mappings = {                 -- Keys to be mapped to their corresponding default scrolling animation
+    '<C-u>', '<C-d>',
+    '<C-b>', '<C-f>',
+    '<C-y>', '<C-e>',
+    'zt', 'zz', 'zb',
+  },
+  hide_cursor = true,          -- Hide cursor while scrolling
+  stop_eof = true,             -- Stop at <EOF> when scrolling downwards
+  respect_scrolloff = false,   -- Stop scrolling when the cursor reaches the scrolloff margin of the file
+  cursor_scrolls_alone = true, -- The cursor will keep on scrolling even if the window cannot scroll further
+  duration_multiplier = 1.0,   -- Global duration multiplier
+  easing = 'linear',           -- Default easing function
+  pre_hook = nil,              -- Function to run before the scrolling animation starts
+  post_hook = nil,             -- Function to run after the scrolling animation ends
+  performance_mode = false,    -- Disable "Performance Mode" on all buffers.
+  ignored_events = {           -- Events ignored while scrolling
+      'WinScrolled', 'CursorMoved'
+  },
+})
