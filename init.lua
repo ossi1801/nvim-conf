@@ -2,18 +2,25 @@
 vim.o.number = true
 vim.o.relativenumber = true
 vim.o.wrap = false
-vim.o.tabstop = 4
+vim.o.shiftwidth = 2
+vim.o.tabstop = 2
 vim.o.swapfile = false
 vim.o.smartindent = true
 vim.o.signcolumn = "yes"
 vim.g.mapleader = " "
+vim.keymap.set('t', '<C-w>h', "<C-\\><C-n><C-w>h",{silent = true}) --exit terminal mode with <ESC> key
 
-
+--Crt issue
+local termfeatures = vim.g.termfeatures or {}
+termfeatures.osc52 = false
+vim.g.termfeatures = termfeatures
+--Should fix +q4D73 issue in crt
 --
 --Plugins
 vim.pack.add({
 	{ src = "https://github.com/vague2k/vague.nvim" },                                 --Color theme
 	{ src = "https://github.com/navarasu/onedark.nvim" },                              --Color theme
+	{ src = "https://github.com/Mofiqul/vscode.nvim" },                              --Color theme
 	{ src = "https://github.com/chentoast/marks.nvim" },                               --Mark your files
 	{ src = "https://github.com/stevearc/oil.nvim" },                                  --File browser
 	{ src = "https://github.com/nvim-tree/nvim-web-devicons" },                        --Icons
@@ -30,6 +37,7 @@ vim.pack.add({
 	{ src = "https://github.com/mfussenegger/nvim-dap" },
 	{ src = "https://github.com/sphamba/smear-cursor.nvim" },
 	{ src = "https://github.com/karb94/neoscroll.nvim" },
+	{ src = "https://github.com/mrcjkb/rustaceanvim" },
 	--	{ src = "https://github.com/rcarriga/nvim-dap-ui" },
 	--https://github.com/numToStr/Comment.nvim
 })
@@ -44,8 +52,11 @@ require('smear_cursor').setup({
 
 })
 --require("vague").setup({})
-require("onedark").setup({ style = 'deep' })
-vim.cmd("colorscheme onedark")
+--require("onedark").setup({ style = 'deep' })
+--vim.cmd("colorscheme onedark")
+
+require("vscode").setup({  })
+vim.cmd("colorscheme vscode")
 
 --Configure LSP
 vim.api.nvim_create_autocmd('LspAttach', {
@@ -60,8 +71,9 @@ vim.api.nvim_create_autocmd('LspAttach', {
 		end
 	end,
 })
+
 vim.cmd [[set completeopt+=menuone,noselect,popup]]
-vim.lsp.enable({ "lua_ls", "clangd", "cpp", "omnisharp","qmlls" })
+vim.lsp.enable({ "lua_ls", "clangd", "cpp", "omnisharp","qmlls", "rust-analyzer","gopls" })
 
 
 --NVIM DEBUGGER STUFF
