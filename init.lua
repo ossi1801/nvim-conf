@@ -35,22 +35,3 @@ require "autocmds"
 vim.schedule(function()
   require "mappings"
 end)
-
-
---Custom stuff
---Set vim options in ~/.config/nvim/lua/options.lua
---vim.opt.relativenumber = true
-
---c# debug
-require("neotest").setup({
-  adapters = {
-    require("neotest-dotnet")
-  }
-})
---Cursor custom animation (default behaviour done in plugins/smear_cursor.lua)
-require("smear_cursor").setup({
-  cursor_color = "ff8800",
-  stiffness = 0.8,
-  trailing_stiffness = 0.5,
-  distance_stop_animation = 0.5,
-})

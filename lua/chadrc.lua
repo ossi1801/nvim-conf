@@ -6,20 +6,12 @@
 local M = {}
 
 M.base46 = {
-	theme = "vscode_dark",--"onedark",
-  --https://nvchad.com/themes
-  --Read :h nvui.base46
+	theme = "gruvbox",
 
-	hl_override = {
-	  Type = { bold = true, italic = false },
-	  ["@comment"] = { italic = true },
-	  ["@function"] = { bold = true, italic = true },
-	  ["@function.builtin"] = { bold = true },
-	  ["@function.call"] = { bold = true },
-	  ["@function.method.call"] = { bold = true },
-	  ["@keyword"] = { italic = true }
-  }
-
+	-- hl_override = {
+	-- 	Comment = { italic = true },
+	-- 	["@comment"] = { italic = true },
+	-- },
 }
 
 -- M.nvdash = { load_on_startup = true }
@@ -29,6 +21,4 @@ M.base46 = {
 --      }
 -- }
 
--- Load custom highlights
---require("custom.configs.highlights")
 return M
